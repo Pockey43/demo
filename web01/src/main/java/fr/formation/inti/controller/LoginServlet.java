@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -41,11 +42,17 @@ public class LoginServlet extends HttpServlet {
 		
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
+		HttpSession session = request.getSession();
+		
 		
 		// mettre une valeur NOT NULL en premier pour equals
 		 if ("root".equals(login) && "123456".equals(password)) {
-			Writer out = response.getWriter();
-			out.append("<html>").append("<head><title>login success</title></head>").append("<body>")
+			 session.setAttribute("message", "you are connected !");
+			 session.setAttribute("dateConnection", new Date());
+			 
+			 
+			 Writer out = response.getWriter();
+			 out.append("<html>").append("<head><title>login success</title></head>").append("<body>")
 					.append("<h1>Hello " + request.getParameter("login") + "</h1>").append("<p>You are connected!</p>")
 					.append("<p>Date : " + new Date() + "</p>");
 
