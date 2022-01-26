@@ -37,28 +37,31 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		response.setContentType("text/html");
 		// null.equals() "root".equals(null)
 		
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
 		
-		
 		// mettre une valeur NOT NULL en premier pour equals
 		 if ("root".equals(login) && "123456".equals(password)) {
-			 session.setAttribute("message", "you are connected !");
-			 session.setAttribute("dateConnection", new Date());
+//			 session.setAttribute("message", "you are connected !");
+//			 session.setAttribute("dateConnection", new Date());
 			 
 			 
 			 Writer out = response.getWriter();
-			 out.append("<html>").append("<head><title>login success</title></head>").append("<body>")
+			 out.append("<html>")
+			 .append("<head><title>login success</title>"
+					+"<link href=\"//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">"
+			 		+ "</head>")
+			 .append("<body>")
 					.append("<h1>Hello " + request.getParameter("login") + "</h1>").append("<p>You are connected!</p>")
 					.append("<p>Date : " + new Date() + "</p>");
 
 		} else {
 			// request.getContextPath() retourne l'URL principale de notre webapp ici : /web01
-			response.sendRedirect(request.getContextPath() + "/index.html");
+			response.sendRedirect(request.getContextPath() + "/index.jsp");
 		}
 
 		 
