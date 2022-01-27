@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@page import="java.util.Date"%>
 <html lang="fr">
 
 <head>
@@ -7,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <h1> <%= new Date() %></h1>
     <link href="css/style.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">    
     

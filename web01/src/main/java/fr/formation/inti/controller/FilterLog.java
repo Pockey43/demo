@@ -67,10 +67,11 @@ public class FilterLog implements Filter {
 		String uri = req.getRequestURI();
 		this.context.log("Requested Resource : " + uri);
 		
-		if(session == null && !(uri.endsWith("login") || uri.endsWith("index.jsp")) ) {
-			this.context.log("Unauthorizes access request");
-			resp.sendRedirect("index.jsp");
+		if(session == null && !(uri.endsWith("login") || uri.endsWith("index.html")) ) {
+			this.context.log("Unauthorizes access request :"+uri);
+			resp.sendRedirect("index.html");
 		}else {
+			this.context.log("authorizes access request :"+uri);
 			chain.doFilter(request, response);
 		}
 		this.context.log("after chain.doFilter");
