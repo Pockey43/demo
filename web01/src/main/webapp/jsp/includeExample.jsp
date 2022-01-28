@@ -10,9 +10,9 @@
 <body>
 	
 	
-	<%@include file="jspf/header.html" %>
+	<%@include file="../jspf/header.html" %>
 	<h2> jsp example include </h2>
-	<%@include file="jspf/footer.html" %>
+	<%@include file="../jspf/footer.html" %>
 	
 </body>
 </html>
